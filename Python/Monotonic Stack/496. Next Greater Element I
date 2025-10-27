@@ -10,7 +10,7 @@ class Solution:
         for num in nums2:
             while stack and num >stack[-1]:
                 pre_num = stack.pop()
-                if pre_num in num1_map:
+                if pre_num in num1_map:    # check for whether the num in in nums1, and get index as the value of the key(num)
                     index = num1_map[pre_num]
                     result[index] = num
             stack.append(num)
