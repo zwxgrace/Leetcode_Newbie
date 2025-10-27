@@ -5,7 +5,7 @@ class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         n = len(temperatures)
         result = [0]*n    # 0 is the answer of not finding a larger datapoint
-        stack = []    # initialize a stack
+        stack = []    # initialize a stack, used for storing the index
 
         for i in range(n):
             # always compare with the latest added one in stack(stack top)
