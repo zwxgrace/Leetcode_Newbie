@@ -1,0 +1,6 @@
+# 环形数组(circular array) + 单调栈
+# we don't need to recurately replicate the array
+# Firstly, we can imagine replicating the array once, just put the replicated one right after the old one
+#     then we can learn all the features of connecting itself repeadly
+#     space complexity: o(n); time complexity O(1)
+# Then, a smarter way is to use %
