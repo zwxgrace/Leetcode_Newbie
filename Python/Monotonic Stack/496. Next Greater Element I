@@ -1,0 +1,18 @@
+class Solution:
+    def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
+        result= [-1]*len(nums1)    # this is easy to set, just obey the ouput rule of every task
+        stack = []
+        num1_map = {num:i for i, num in enumerate(nums1)}
+        # the main diference is in the Hashmap, the relation between a num in nums2
+        # we should first find it in nums1
+        # and  what we use is its index in nums, so use a Hashmap to get this num:index relationship
+
+        for num in nums2:
+            while stack and num >stack[-1]:
+                pre_num = stack.pop()
+                if pre_num in num1_map:
+                    index = num1_map[pre_num]
+                    result[index] = num
+            stack.append(num)
+        return result
+        
