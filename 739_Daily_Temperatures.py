@@ -1,4 +1,6 @@
 # 739. Daily Temperatures
+from typing import List
+
 class Solution:
     def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
         n = len(temperatures)
@@ -20,3 +22,11 @@ class Solution:
 T = [24, 26, 28, 18, 17, 22]
 result_t= dailyTemperatures(T)
 print(result_t)
+
+if __name__ == '__main__':
+    solver = Solution()
+    
+    T = [24, 26, 28, 18, 17, 22]
+    result_t = solver.dailyTemperatures(T)
+    
+    print(result_t)
