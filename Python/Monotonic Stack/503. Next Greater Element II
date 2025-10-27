@@ -3,4 +3,42 @@
 # Firstly, we can imagine replicating the array once, just put the replicated one right after the old one
 #     then we can learn all the features of connecting itself repeadly
 #     space complexity: o(n); time complexity O(1)
-# Then, a smarter way is to use %
+
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        result = [-1]*n*2
+        stack = []
+        nums_used = nums*2
+
+        for i in range(len(nums_used)):
+            while stack and nums_used[i] > nums_used[stack[-1]]:
+                prev_index = stack.pop()
+                result[prev_index] = nums_used[i]
+
+            stack.append(i)
+        
+        result_final = result[:n]
+        return result_final
+
+# Then, we can try a better way using %, to mimic the circular process
+# The important point is actually loop in length of 2n, while insure the recored index is correct(using i%n)
+class Solution:
+    def nextGreaterElements(self, nums: List[int]) -> List[int]:
+        n = len(nums)
+        result = [-1]*n
+        stack = []
+        
+        # we need to loop for length (2n) to mimic the circual process
+        for i in range(2 * n):   # !!!
+            current_index = i % n    # !!!
+            # the real index in the nums is transfered into 'current_index'
+            current_num = nums[current_index]
+            
+            while stack and current_num > nums[stack[-1]]:
+                prev_index = stack.pop()
+                result[prev_index] = current_num
+            
+            stack.append(current_index)    # what is updated is always the the orginal index in the nums, not nums*2
+                
+        return result
